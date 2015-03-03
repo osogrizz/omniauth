@@ -1,0 +1,49 @@
+<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/flatly/bootstrap.min.css" rel="stylesheet">
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '784344391645832',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<div class="jumbotron">
+<ul>
+  <h1>Yo dawg I heard you like twitter!</h1>
+  <p>So I put a twitter sign in button in yo webpage so you can sign in with twitter while you are already signed in! Yo!</p>
+
+    <% if current_user %>
+      Signed in as <%= current_user.name %>!
+      <%= link_to "Sign out", signout_path %>
+    <% else %>
+      <p><%= button_to "sign in with twitter, dawg!", "/auth/twitter" %></p>
+      
+      <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+      </fb:login-button>
+
+    <% end %>
+  
+    
+  </ul>
+</div>
+
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+
+
